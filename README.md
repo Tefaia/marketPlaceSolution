@@ -40,6 +40,8 @@ java BlockExplorer.java java BlockExplorer
 
 8. npm install -g ganache-cli
 
+9. open bash:  ganache-cli
+
    
 Run node via terminal - node index.js
 
