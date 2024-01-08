@@ -42,6 +42,8 @@ java BlockExplorer.java java BlockExplorer
 
 9. open bash:  ganache-cli
 
+open another bash to project folder
+10. truffle console
    
 Run node via terminal - node index.js
 
