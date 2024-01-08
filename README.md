@@ -1,3 +1,7 @@
+
+A Blockchain Network has been designed to facilitate interaction between two fundamental contracts: the Marketplace Contract and the Shipping Status Contract. The Marketplace Contract governs the functionalities and transactions within the marketplace ecosystem, while the Shipping Status Contract oversees the tracking and management of shipping-related information. This interaction enables seamless coordination between the marketplace operations and the tracking of shipping statuses, ensuring a comprehensive and integrated system for users engaging in transactions within this blockchain environment.
+
+
 1.Install Python dependencies: bash 
 pip install flask 
 
