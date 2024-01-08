@@ -36,8 +36,10 @@ java BlockExplorer.java java BlockExplorer
 6. Compile the smart contracts: 
 (cd MarketPlaceSolutions> truffle compile) or truffle init
 
+7. truffle migrate --network development
 
-Running in node via terminal - node index.js
+   
+Run node via terminal - node index.js
 
 cd MarketPlace
 
