@@ -65,7 +65,7 @@ TO RUN Program
 
 cd MarketPlaceSolutions
 
-1.truffle compile
+1.truffle compile  (in case to restart do truffle init) then compile again
 
 2.truffle migrate --network development 
 
