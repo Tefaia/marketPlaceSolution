@@ -37,9 +37,7 @@ java BlockExplorer.java java BlockExplorer
 
 7. truffle migrate --network development
 
-8. npm install -g ganache-cli
 
-9. open bash:  ganache-cli
 
 open another bash to project folder
 10. truffle console
