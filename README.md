@@ -38,6 +38,8 @@ java BlockExplorer.java java BlockExplorer
 
 7. truffle migrate --network development
 
+8. npm install -g ganache-cli
+
    
 Run node via terminal - node index.js
 
