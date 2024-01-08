@@ -1,0 +1,897 @@
+{
+  "contractName": "ShippingStatusContract",
+  "abi": [
+    {
+      "inputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "state",
+      "outputs": [
+        {
+          "internalType": "enum ShippingStatusContract.StateType",
+          "name": "",
+          "type": "uint8"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "enum ShippingStatusContract.StateType",
+          "name": "newState",
+          "type": "uint8"
+        }
+      ],
+      "name": "updateState",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "getState",
+      "outputs": [
+        {
+          "internalType": "enum ShippingStatusContract.StateType",
+          "name": "",
+          "type": "uint8"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"constant\":true,\"inputs\":[],\"name\":\"getState\",\"outputs\":[{\"internalType\":\"enum ShippingStatusContract.StateType\",\"name\":\"\",\"type\":\"uint8\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"state\",\"outputs\":[{\"internalType\":\"enum ShippingStatusContract.StateType\",\"name\":\"\",\"type\":\"uint8\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"enum ShippingStatusContract.StateType\",\"name\":\"newState\",\"type\":\"uint8\"}],\"name\":\"updateState\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"project:/contracts/shipping_status_contract.sol\":\"ShippingStatusContract\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/shipping_status_contract.sol\":{\"keccak256\":\"0x07ca72c3c08c075bb6b41751a1a2967e7773ed03895b2ecfa4e4912812d21681\",\"urls\":[\"bzz-raw://4c728a2c5878e49da4e1945e5d83672d9fa9ab6307e9b7749f55069857a1bc2b\",\"dweb:/ipfs/QmYgTvcK4UrTdMVFk8mGjenpYZ14ixCm9QLpk3nVW7NSaQ\"]}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b5060008060006101000a81548160ff0219169083600181111561002f57fe5b0217905550610151806100436000396000f3fe608060405234801561001057600080fd5b50600436106100415760003560e01c80630591d3ab146100465780631865c57d14610077578063c19d93fb146100a3575b600080fd5b6100756004803603602081101561005c57600080fd5b81019080803560ff1690602001909291905050506100cf565b005b61007f6100f4565b6040518082600181111561008f57fe5b60ff16815260200191505060405180910390f35b6100ab61010a565b604051808260018111156100bb57fe5b60ff16815260200191505060405180910390f35b806000806101000a81548160ff021916908360018111156100ec57fe5b021790555050565b60008060009054906101000a900460ff16905090565b6000809054906101000a900460ff168156fea265627a7a72315820f2c0687c7a7623927c08dfdc562ead0a7912e375ff2d4e643b2e48edd4432e9a64736f6c63430005100032",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100415760003560e01c80630591d3ab146100465780631865c57d14610077578063c19d93fb146100a3575b600080fd5b6100756004803603602081101561005c57600080fd5b81019080803560ff1690602001909291905050506100cf565b005b61007f6100f4565b6040518082600181111561008f57fe5b60ff16815260200191505060405180910390f35b6100ab61010a565b604051808260018111156100bb57fe5b60ff16815260200191505060405180910390f35b806000806101000a81548160ff021916908360018111156100ec57fe5b021790555050565b60008060009054906101000a900460ff16905090565b6000809054906101000a900460ff168156fea265627a7a72315820f2c0687c7a7623927c08dfdc562ead0a7912e375ff2d4e643b2e48edd4432e9a64736f6c63430005100032",
+  "sourceMap": "28:381:1:-;;;153:71;8:9:-1;5:2;;;30:1;27;20:12;5:2;153:71:1;193:23;185:5;;:31;;;;;;;;;;;;;;;;;;;;;;;;28:381;;;;;;",
+  "deployedSourceMap": "28:381:1:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;28:381:1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;232:83;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;232:83:1;;;;;;;;;;;;;;;;;;;:::i;:::-;;323;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;122:22;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;232:83;299:8;291:5;;:16;;;;;;;;;;;;;;;;;;;;;;;;232:83;:::o;323:::-;364:9;393:5;;;;;;;;;;;386:12;;323:83;:::o;122:22::-;;;;;;;;;;;;;:::o",
+  "source": "pragma solidity ^0.5.16;\r\n\r\ncontract ShippingStatusContract {\r\n    enum StateType { ItemAvailable, ItemPurchased }\r\n\r\n    StateType public state;\r\n\r\n    constructor() public {\r\n        state = StateType.ItemAvailable;\r\n    }\r\n\r\n    function updateState(StateType newState) public {\r\n        state = newState;\r\n    }\r\n\r\n    function getState() public view returns (StateType) {\r\n        return state;\r\n    }\r\n}\r\n",
+  "sourcePath": "C:\\Users\\Administrator\\Desktop\\MarketPlace\\contracts\\shipping_status_contract.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/shipping_status_contract.sol",
+    "exportedSymbols": {
+      "ShippingStatusContract": [
+        139
+      ]
+    },
+    "id": 140,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 106,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".16"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:24:1"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 139,
+        "linearizedBaseContracts": [
+          139
+        ],
+        "name": "ShippingStatusContract",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "ShippingStatusContract.StateType",
+            "id": 109,
+            "members": [
+              {
+                "id": 107,
+                "name": "ItemAvailable",
+                "nodeType": "EnumValue",
+                "src": "84:13:1"
+              },
+              {
+                "id": 108,
+                "name": "ItemPurchased",
+                "nodeType": "EnumValue",
+                "src": "99:13:1"
+              }
+            ],
+            "name": "StateType",
+            "nodeType": "EnumDefinition",
+            "src": "67:47:1"
+          },
+          {
+            "constant": false,
+            "id": 111,
+            "name": "state",
+            "nodeType": "VariableDeclaration",
+            "scope": 139,
+            "src": "122:22:1",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_enum$_StateType_$109",
+              "typeString": "enum ShippingStatusContract.StateType"
+            },
+            "typeName": {
+              "contractScope": null,
+              "id": 110,
+              "name": "StateType",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 109,
+              "src": "122:9:1",
+              "typeDescriptions": {
+                "typeIdentifier": "t_enum$_StateType_$109",
+                "typeString": "enum ShippingStatusContract.StateType"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 119,
+              "nodeType": "Block",
+              "src": "174:50:1",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 117,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 114,
+                      "name": "state",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 111,
+                      "src": "185:5:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_enum$_StateType_$109",
+                        "typeString": "enum ShippingStatusContract.StateType"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 115,
+                        "name": "StateType",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 109,
+                        "src": "193:9:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_enum$_StateType_$109_$",
+                          "typeString": "type(enum ShippingStatusContract.StateType)"
+                        }
+                      },
+                      "id": 116,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "lValueRequested": false,
+                      "memberName": "ItemAvailable",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": null,
+                      "src": "193:23:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_enum$_StateType_$109",
+                        "typeString": "enum ShippingStatusContract.StateType"
+                      }
+                    },
+                    "src": "185:31:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_enum$_StateType_$109",
+                      "typeString": "enum ShippingStatusContract.StateType"
+                    }
+                  },
+                  "id": 118,
+                  "nodeType": "ExpressionStatement",
+                  "src": "185:31:1"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 120,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [],
+            "name": "",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 112,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "164:2:1"
+            },
+            "returnParameters": {
+              "id": 113,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "174:0:1"
+            },
+            "scope": 139,
+            "src": "153:71:1",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 129,
+              "nodeType": "Block",
+              "src": "280:35:1",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 127,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 125,
+                      "name": "state",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 111,
+                      "src": "291:5:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_enum$_StateType_$109",
+                        "typeString": "enum ShippingStatusContract.StateType"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 126,
+                      "name": "newState",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 122,
+                      "src": "299:8:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_enum$_StateType_$109",
+                        "typeString": "enum ShippingStatusContract.StateType"
+                      }
+                    },
+                    "src": "291:16:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_enum$_StateType_$109",
+                      "typeString": "enum ShippingStatusContract.StateType"
+                    }
+                  },
+                  "id": 128,
+                  "nodeType": "ExpressionStatement",
+                  "src": "291:16:1"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 130,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "updateState",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 123,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 122,
+                  "name": "newState",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 130,
+                  "src": "253:18:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_enum$_StateType_$109",
+                    "typeString": "enum ShippingStatusContract.StateType"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 121,
+                    "name": "StateType",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 109,
+                    "src": "253:9:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_enum$_StateType_$109",
+                      "typeString": "enum ShippingStatusContract.StateType"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "252:20:1"
+            },
+            "returnParameters": {
+              "id": 124,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "280:0:1"
+            },
+            "scope": 139,
+            "src": "232:83:1",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 137,
+              "nodeType": "Block",
+              "src": "375:31:1",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 135,
+                    "name": "state",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 111,
+                    "src": "393:5:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_enum$_StateType_$109",
+                      "typeString": "enum ShippingStatusContract.StateType"
+                    }
+                  },
+                  "functionReturnParameters": 134,
+                  "id": 136,
+                  "nodeType": "Return",
+                  "src": "386:12:1"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 138,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getState",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 131,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "340:2:1"
+            },
+            "returnParameters": {
+              "id": 134,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 133,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 138,
+                  "src": "364:9:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_enum$_StateType_$109",
+                    "typeString": "enum ShippingStatusContract.StateType"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 132,
+                    "name": "StateType",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 109,
+                    "src": "364:9:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_enum$_StateType_$109",
+                      "typeString": "enum ShippingStatusContract.StateType"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "363:11:1"
+            },
+            "scope": 139,
+            "src": "323:83:1",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 140,
+        "src": "28:381:1"
+      }
+    ],
+    "src": "0:411:1"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "project:/contracts/shipping_status_contract.sol",
+      "exportedSymbols": {
+        "ShippingStatusContract": [
+          139
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "^",
+            "0.5",
+            ".16"
+          ]
+        },
+        "id": 106,
+        "name": "PragmaDirective",
+        "src": "0:24:1"
+      },
+      {
+        "attributes": {
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "contract",
+          "documentation": null,
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            139
+          ],
+          "name": "ShippingStatusContract",
+          "scope": 140
+        },
+        "children": [
+          {
+            "attributes": {
+              "canonicalName": "ShippingStatusContract.StateType",
+              "name": "StateType"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "name": "ItemAvailable"
+                },
+                "id": 107,
+                "name": "EnumValue",
+                "src": "84:13:1"
+              },
+              {
+                "attributes": {
+                  "name": "ItemPurchased"
+                },
+                "id": 108,
+                "name": "EnumValue",
+                "src": "99:13:1"
+              }
+            ],
+            "id": 109,
+            "name": "EnumDefinition",
+            "src": "67:47:1"
+          },
+          {
+            "attributes": {
+              "constant": false,
+              "name": "state",
+              "scope": 139,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "enum ShippingStatusContract.StateType",
+              "value": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "contractScope": null,
+                  "name": "StateType",
+                  "referencedDeclaration": 109,
+                  "type": "enum ShippingStatusContract.StateType"
+                },
+                "id": 110,
+                "name": "UserDefinedTypeName",
+                "src": "122:9:1"
+              }
+            ],
+            "id": 111,
+            "name": "VariableDeclaration",
+            "src": "122:22:1"
+          },
+          {
+            "attributes": {
+              "documentation": null,
+              "implemented": true,
+              "isConstructor": true,
+              "kind": "constructor",
+              "modifiers": [
+                null
+              ],
+              "name": "",
+              "scope": 139,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 112,
+                "name": "ParameterList",
+                "src": "164:2:1"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 113,
+                "name": "ParameterList",
+                "src": "174:0:1"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "=",
+                          "type": "enum ShippingStatusContract.StateType"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 111,
+                              "type": "enum ShippingStatusContract.StateType",
+                              "value": "state"
+                            },
+                            "id": 114,
+                            "name": "Identifier",
+                            "src": "185:5:1"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "lValueRequested": false,
+                              "member_name": "ItemAvailable",
+                              "referencedDeclaration": null,
+                              "type": "enum ShippingStatusContract.StateType"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 109,
+                                  "type": "type(enum ShippingStatusContract.StateType)",
+                                  "value": "StateType"
+                                },
+                                "id": 115,
+                                "name": "Identifier",
+                                "src": "193:9:1"
+                              }
+                            ],
+                            "id": 116,
+                            "name": "MemberAccess",
+                            "src": "193:23:1"
+                          }
+                        ],
+                        "id": 117,
+                        "name": "Assignment",
+                        "src": "185:31:1"
+                      }
+                    ],
+                    "id": 118,
+                    "name": "ExpressionStatement",
+                    "src": "185:31:1"
+                  }
+                ],
+                "id": 119,
+                "name": "Block",
+                "src": "174:50:1"
+              }
+            ],
+            "id": 120,
+            "name": "FunctionDefinition",
+            "src": "153:71:1"
+          },
+          {
+            "attributes": {
+              "documentation": null,
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "updateState",
+              "scope": 139,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "newState",
+                      "scope": 130,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "enum ShippingStatusContract.StateType",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "contractScope": null,
+                          "name": "StateType",
+                          "referencedDeclaration": 109,
+                          "type": "enum ShippingStatusContract.StateType"
+                        },
+                        "id": 121,
+                        "name": "UserDefinedTypeName",
+                        "src": "253:9:1"
+                      }
+                    ],
+                    "id": 122,
+                    "name": "VariableDeclaration",
+                    "src": "253:18:1"
+                  }
+                ],
+                "id": 123,
+                "name": "ParameterList",
+                "src": "252:20:1"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 124,
+                "name": "ParameterList",
+                "src": "280:0:1"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "=",
+                          "type": "enum ShippingStatusContract.StateType"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 111,
+                              "type": "enum ShippingStatusContract.StateType",
+                              "value": "state"
+                            },
+                            "id": 125,
+                            "name": "Identifier",
+                            "src": "291:5:1"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 122,
+                              "type": "enum ShippingStatusContract.StateType",
+                              "value": "newState"
+                            },
+                            "id": 126,
+                            "name": "Identifier",
+                            "src": "299:8:1"
+                          }
+                        ],
+                        "id": 127,
+                        "name": "Assignment",
+                        "src": "291:16:1"
+                      }
+                    ],
+                    "id": 128,
+                    "name": "ExpressionStatement",
+                    "src": "291:16:1"
+                  }
+                ],
+                "id": 129,
+                "name": "Block",
+                "src": "280:35:1"
+              }
+            ],
+            "id": 130,
+            "name": "FunctionDefinition",
+            "src": "232:83:1"
+          },
+          {
+            "attributes": {
+              "documentation": null,
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "getState",
+              "scope": 139,
+              "stateMutability": "view",
+              "superFunction": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 131,
+                "name": "ParameterList",
+                "src": "340:2:1"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 138,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "enum ShippingStatusContract.StateType",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "contractScope": null,
+                          "name": "StateType",
+                          "referencedDeclaration": 109,
+                          "type": "enum ShippingStatusContract.StateType"
+                        },
+                        "id": 132,
+                        "name": "UserDefinedTypeName",
+                        "src": "364:9:1"
+                      }
+                    ],
+                    "id": 133,
+                    "name": "VariableDeclaration",
+                    "src": "364:9:1"
+                  }
+                ],
+                "id": 134,
+                "name": "ParameterList",
+                "src": "363:11:1"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "functionReturnParameters": 134
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "overloadedDeclarations": [
+                            null
+                          ],
+                          "referencedDeclaration": 111,
+                          "type": "enum ShippingStatusContract.StateType",
+                          "value": "state"
+                        },
+                        "id": 135,
+                        "name": "Identifier",
+                        "src": "393:5:1"
+                      }
+                    ],
+                    "id": 136,
+                    "name": "Return",
+                    "src": "386:12:1"
+                  }
+                ],
+                "id": 137,
+                "name": "Block",
+                "src": "375:31:1"
+              }
+            ],
+            "id": 138,
+            "name": "FunctionDefinition",
+            "src": "323:83:1"
+          }
+        ],
+        "id": 139,
+        "name": "ContractDefinition",
+        "src": "28:381:1"
+      }
+    ],
+    "id": 140,
+    "name": "SourceUnit",
+    "src": "0:411:1"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.16+commit.9c3226ce.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.16",
+  "updatedAt": "2024-01-05T12:59:21.045Z",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}
