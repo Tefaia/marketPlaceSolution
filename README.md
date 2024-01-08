@@ -35,10 +35,6 @@ java BlockExplorer.java java BlockExplorer
 
 6. Compile the smart contracts: 
 (cd MarketPlaceSolutions> truffle compile) or truffle init
-bash
-solc --bin shipping_status_contract.sol -o build 
-
-solc --bin marketplace_contract.sol -o build 
 
 
 Running in node via terminal - node index.js
